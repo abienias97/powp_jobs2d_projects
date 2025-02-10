@@ -166,6 +166,7 @@ public class TestJobs2dApp {
                 setupWindows(app);
 
                 MouseClickDrawFeature.setupMousePlugin(app, DriverFeature.getDriverManager());
+                ServicableFeature.setupServicablePlugin(app);
                 app.setVisibility(true);
             }
         });
