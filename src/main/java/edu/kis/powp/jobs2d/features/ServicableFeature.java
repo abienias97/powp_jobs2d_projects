@@ -1,7 +1,7 @@
 package edu.kis.powp.jobs2d.features;
 
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.monitor.DeviceMonitorDriver;
+import edu.kis.powp.jobs2d.drivers.adapter.controller.DeviceControllerDriver;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +10,13 @@ import java.awt.event.ActionListener;
 public class ServicableFeature {
 
 	private static Application application;
-	private static final DeviceMonitorDriver deviceMonitorDriver = new DeviceMonitorDriver();
+	private static DeviceControllerDriver deviceControllerDriver = null;
 
 	public static void setupServicablePlugin(
-			Application application
+			Application application,
+			DeviceControllerDriver deviceControllerDriver
 	) {
+		ServicableFeature.deviceControllerDriver = deviceControllerDriver;
 		ServicableFeature.application = application;
 		ServicableFeature.application.addComponentMenu(ServicableFeature.class, "Servicing");
 		ServicableFeature.application.addComponentMenuElement(ServicableFeature.class, "Refill", refillListener);
@@ -22,7 +24,7 @@ public class ServicableFeature {
 
 	private static final ActionListener refillListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			deviceMonitorDriver.refill();
+			deviceControllerDriver.refill();
 		}
 	};
 }

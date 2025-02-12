@@ -4,15 +4,15 @@ import edu.kis.powp.jobs2d.drivers.RefillableDevice;
 
 import java.util.logging.Logger;
 
-public final class DeviceMonitor implements RefillableDevice {
+public final class DeviceController implements RefillableDevice {
     private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    private static DeviceMonitor instance;
+    private static DeviceController instance;
     private int previousX = 0, previousY = 0;
     private double setPositionDistance = 0.0, operateToDistance = 0.0, lastServiceDistance = 0;
 
-    public static DeviceMonitor getInstance() {
+    public static DeviceController getInstance() {
         if (instance == null) {
-            instance = new DeviceMonitor();
+            instance = new DeviceController();
         }
         return instance;
     }

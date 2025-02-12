@@ -16,6 +16,7 @@ import edu.kis.powp.jobs2d.drivers.DriverComposite;
 import edu.kis.powp.jobs2d.drivers.ImprovedLoggerDriver;
 import edu.kis.powp.jobs2d.drivers.VisitableJob2dDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDriverAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.controller.DeviceControllerDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.transformation.TransformationFlip;
 import edu.kis.powp.jobs2d.drivers.adapter.transformation.TransformationFlipAxis;
 import edu.kis.powp.jobs2d.drivers.adapter.transformation.TransformationScale;
@@ -153,8 +154,9 @@ public class TestJobs2dApp {
 
                 CanvasFeature.setCanvases(canvases);
                 CanvasFeature.setupCanvasFeature(app);
-
-                UsageMonitorFeature.setupDeviceMonitorPlugin(DriverFeature.getDriverManager());
+                DeviceControllerDriver deviceControllerDriver = new DeviceControllerDriver();
+                deviceControllerDriver.setDistanceThreshold(2000.0);
+                UsageMonitorFeature.setupDeviceMonitorPlugin(DriverFeature.getDriverManager(), deviceControllerDriver);
                 DriverFeature.setupDriverPlugin(app);
                 setupDrivers(app);
                 TransformationFeature.setupTransformationPlugin(app, DriverFeature.getDriverManager());
@@ -166,7 +168,7 @@ public class TestJobs2dApp {
                 setupWindows(app);
 
                 MouseClickDrawFeature.setupMousePlugin(app, DriverFeature.getDriverManager());
-                ServicableFeature.setupServicablePlugin(app);
+                ServicableFeature.setupServicablePlugin(app, deviceControllerDriver);
                 app.setVisibility(true);
             }
         });
