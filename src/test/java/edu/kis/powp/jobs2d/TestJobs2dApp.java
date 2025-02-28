@@ -155,7 +155,7 @@ public class TestJobs2dApp {
                 CanvasFeature.setCanvases(canvases);
                 CanvasFeature.setupCanvasFeature(app);
                 DeviceControllerDriver deviceControllerDriver = new DeviceControllerDriver();
-                deviceControllerDriver.setDistanceThreshold(2000.0);
+                deviceControllerDriver.addDistanceThreshold(2000.0);
                 UsageMonitorFeature.setupDeviceMonitorPlugin(DriverFeature.getDriverManager(), deviceControllerDriver);
                 DriverFeature.setupDriverPlugin(app);
                 setupDrivers(app);
