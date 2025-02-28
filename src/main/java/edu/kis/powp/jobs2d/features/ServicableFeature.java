@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d.features;
-
+import edu.kis.powp.jobs2d.drivers.adapter.controller.LoggingThresholdListener;
+import edu.kis.powp.jobs2d.drivers.singleton.DeviceManager;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.controller.DeviceControllerDriver;
 
@@ -18,6 +19,7 @@ public class ServicableFeature {
 	) {
 		ServicableFeature.deviceControllerDriver = deviceControllerDriver;
 		ServicableFeature.application = application;
+		DeviceManager.getInstance().addThresholdListener(new LoggingThresholdListener());
 		ServicableFeature.application.addComponentMenu(ServicableFeature.class, "Servicing");
 		ServicableFeature.application.addComponentMenuElement(ServicableFeature.class, "Refill", refillListener);
 	}

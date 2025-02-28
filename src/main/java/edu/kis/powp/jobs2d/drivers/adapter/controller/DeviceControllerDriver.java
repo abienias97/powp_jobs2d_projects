@@ -11,12 +11,10 @@ public class DeviceControllerDriver implements DriverDecorator {
 
 
     public DeviceControllerDriver() {
-        DeviceManager.getInstance().addThresholdListener(new LoggingThresholdListener());
     }
 
     public DeviceControllerDriver(VisitableJob2dDriver driver) {
         this.driver = driver;
-        DeviceManager.getInstance().addThresholdListener(new LoggingThresholdListener());
     }
     //send to DriverManager
     public void addDistanceThreshold(double threshold) {
